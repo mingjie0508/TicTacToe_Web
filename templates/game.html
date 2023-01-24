@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <style>
+            caption {
+                font-size: 80px;
+            }
+            table {
+                border-collapse: collapse;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            td {
+                border: 1px solid black;
+                width: 150px;
+                height: 150px;
+                font-size: 48px;
+                text-align: center;
+            }
+            td > a {
+                padding: 36px;
+                opacity: 0;
+                text-decoration: none;
+                font-size: 48px;
+                color: grey;
+            }
+            td > a:hover {
+                opacity: 0.5;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <caption>Tic Tac Toe</caption>
+            {% for i in range(3) %}
+                <tr>
+                    {% for j in range(3) %}
+                        <td>
+                            {% if board[3*i+j] == 'X' %}
+                                X
+                            {% elif board[3*i+j] == 'O' %}
+                                O
+                            {% else %}
+                                <a href="{{ url_for('play1', board_string=board, player='O', row=i, col=j) }}">O</a>
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
